@@ -99,7 +99,7 @@
         <div class="p-6 border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200/80">
             <div class="flex items-center space-x-3 mb-4">
                 <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h2m0 0H7a2 2 0 00-2-2m2 2h10a2 2 0 002-2m0 0V7a2 2 0 00-2-2h-2.5a2 2 0 00-1 3.6L7 11"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
                 </div>
                 <h1 class="text-base font-semibold tracking-wider text-slate-200 dark:text-slate-200 light:text-slate-900">QC DASHBOARD</h1>
             </div>
@@ -107,17 +107,17 @@
                 type="text" 
                 id="area-block-name" 
                 placeholder="Area / Block Name" 
-                class="w-full px-3 py-2 bg-slate-900 border border-slate-700 text-slate-200 placeholder-slate-500 rounded text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-200 light:bg-white light:border-slate-300 light:text-slate-900 light:placeholder-slate-400"
+                class="w-full px-3 py-2 bg-slate-900 border border-slate-700 text-slate-200 placeholder-slate-500 rounded text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             >
         </div>
         <nav class="flex-1 overflow-y-auto py-4 space-y-1 px-3">
-            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800/50 indicator-icon dark:bg-slate-900/80 light:bg-slate-100 light:text-indigo-600 light:border-slate-300/50">
-                <svg class="w-4 h-4 indicator-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path></svg>
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800">
+                <svg class="w-4 h-4 indicator-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                 <span class="text-sm">Overview</span>
             </button>
             
             <div class="px-3 pt-5 pb-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-500 light:text-slate-400">Reports</div>
-            <button onclick="switchTab('summary')" id="nav-summary" class="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100">
+            <button onclick="switchTab('summary')" id="nav-summary" class="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn">
                 <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400"></div>
                 <span class="text-sm">Summarized Report</span>
             </button>
@@ -137,33 +137,33 @@
     <div class="flex-1 flex flex-col h-screen relative bg-darkbg dark:bg-darkbg light:bg-white">
         
         <!-- Header -->
-        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10 dark:border-slate-800/80 dark:bg-slate-900/40 light:border-slate-200 light:bg-white/80">
+        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10 dark:border-slate-800/80 dark:bg-slate-900/40 light:border-slate-200 light:bg-white">
             <h2 id="header-title" class="text-base font-medium text-slate-200 dark:text-slate-200 light:text-slate-900">Overview Dashboard</h2>
             
             <div class="flex items-center space-x-3">
                 <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" id="theme-toggle" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition duration-150 theme-toggle dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 light:border-slate-300/60 light:text-slate-600" title="Toggle light/dark mode">
+                <button onclick="toggleTheme()" id="theme-toggle" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white theme-toggle dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 light:text-slate-600">
                     <svg id="sun-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1m-16 0H1m15.364 1.636l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg id="moon-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
 
                 <!-- Bulk Fill (Hidden on Dashboard) -->
-                <div id="bulk-fill-tool" class="hidden flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-md border border-slate-800 dark:bg-slate-900/90 dark:border-slate-800 light:bg-white light:border-slate-300">
+                <div id="bulk-fill-tool" class="hidden flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-md border border-slate-800 dark:bg-slate-900/90 dark:border-slate-800 light:bg-white light:border-slate-200">
                     <span class="text-[11px] font-medium text-slate-400 uppercase px-2 dark:text-slate-400 light:text-slate-600">Bulk Fill:</span>
-                    <input type="text" id="bulk-name" placeholder="Initials" class="text-xs px-2.5 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 placeholder-slate-600 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 dark:border-slate-700/80 light:bg-slate-50 light:border-slate-300 light:text-slate-900 light:placeholder-slate-500">
-                    <input type="date" id="bulk-date" class="text-xs px-2 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 dark:border-slate-700/80 light:bg-slate-50 light:border-slate-300 light:text-slate-900">
-                    <button onclick="applyBulkFill()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-900 light:border-slate-400">Apply</button>
+                    <input type="text" id="bulk-name" placeholder="Initials" class="text-xs px-2.5 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 placeholder-slate-600 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 light:bg-white light:border-slate-300 light:text-slate-900">
+                    <input type="date" id="bulk-date" class="text-xs px-2 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 light:bg-white light:border-slate-300 light:text-slate-900">
+                    <button onclick="applyBulkFill()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 light:text-slate-900">Apply</button>
                 </div>
                 
                 <!-- Export to Excel Button -->
-                <button onclick="exportToExcel()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 text-xs font-medium transition duration-150 dark:bg-slate-900 dark:hover:bg-slate-800 dark:text-slate-300 light:bg-emerald-50 light:hover:bg-emerald-100 light:text-emerald-600 light:border-emerald-300/60">
-                    <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-400 light:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                <button onclick="exportToExcel()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 hover:border-slate-600 text-xs font-medium transition duration-150 dark:bg-slate-900 dark:hover:bg-slate-800 light:bg-slate-100 light:hover:bg-slate-200 light:text-slate-900 light:border-slate-200">
+                    <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-400 light:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     <span>Export Excel</span>
                 </button>
 
                 <!-- Export / Print PDF Button -->
-                <button onclick="printPDF()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/50 hover:border-indigo-400/50 text-xs font-medium transition duration-150 dark:bg-indigo-600 dark:hover:bg-indigo-500 light:bg-indigo-500 light:hover:bg-indigo-600">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                <button onclick="printPDF()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/50 hover:border-indigo-400 text-xs font-medium transition duration-150 dark:bg-indigo-600 dark:hover:bg-indigo-500 light:bg-indigo-500 light:hover:bg-indigo-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m4 4h8a2 2 0 002-2v-4a2 2 0 00-2-2h-4.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-2.586a2 2 0 00-2 2v4a2 2 0 002 2z"></path></svg>
                     <span>Export PDF</span>
                 </button>
             </div>
@@ -213,31 +213,31 @@
     <script>
         const qcData = {
           "MBES Vessel": [
-            {"no": 1, "category": "A. Positioning", "check_item": "GNSS positioning system (RTK/PPK) is fixed and logging correctly.", "criteria": "Fix status = RTK Fixed / PPK converged, no drop"},
+            {"no": 1, "category": "A. Positioning", "check_item": "GNSS positioning system (RTK/PPK) is fixed and logging correctly.", "criteria": "Fix status = RTK Fixed / PPK converged, no dropouts."},
             {"no": 2, "category": "A. Positioning", "check_item": "Horizontal and vertical datum match the project spec.", "criteria": "Datum/projection recorded in metadata."},
             {"no": 3, "category": "A. Positioning", "check_item": "GNSS antenna to transducer offset is measured and entered in software.", "criteria": "Offset accuracy under 2 cm (survey grade)."},
             {"no": 4, "category": "B. Motion", "check_item": "MRU is calibrated and mounted per manufacturer spec.", "criteria": "Calibration certificate on file."},
             {"no": 5, "category": "B. Motion", "check_item": "Patch test is complete (latency, roll, pitch, yaw).", "criteria": "Residuals within IHO S-44 / manufacturer tolerance."},
             {"no": 6, "category": "B. Motion", "check_item": "Heave, roll, and pitch look reasonable during the survey.", "criteria": "No spikes or dropouts in real-time motion data."},
-            {"no": 7, "category": "C. Sound velocity / tide", "check_item": "Sound velocity profile (SVP) is cast and applied.", "criteria": "SVP age under 24 hours, or more often if conditions v"},
-            {"no": 8, "category": "C. Sound velocity / tide", "check_item": "Tide / water level correction source is configured and verified.", "criteria": "Matches the nearest tide station or an"},
-            {"no": 9, "category": "C. Sound velocity / tide", "check_item": "Static draft and dynamic draft (squat/settlement) are accounted for.", "criteria": "Draft measured before/after the su"},
-            {"no": 10, "category": "D. Acquisition", "check_item": "Ping rate / beam coverage is adequate for the planned resolution.", "criteria": "Meets survey spec (e.g., 100% coverage, requir"},
-            {"no": 11, "category": "D. Acquisition", "check_item": "Real-time data shows no major gaps, noise, or refraction artifacts.", "criteria": "Reviewed on each line before moving to the n"},
+            {"no": 7, "category": "C. Sound velocity / tide", "check_item": "Sound velocity profile (SVP) is cast and applied.", "criteria": "SVP age under 24 hours, or more often if conditions vary."},
+            {"no": 8, "category": "C. Sound velocity / tide", "check_item": "Tide / water level correction source is configured and verified.", "criteria": "Matches the nearest tide station or an approved method."},
+            {"no": 9, "category": "C. Sound velocity / tide", "check_item": "Static draft and dynamic draft (squat/settlement) are accounted for.", "criteria": "Draft measured before/after the survey."},
+            {"no": 10, "category": "D. Acquisition", "check_item": "Ping rate / beam coverage is adequate for the planned resolution.", "criteria": "Meets survey spec (e.g., 100% coverage, required swath)."},
+            {"no": 11, "category": "D. Acquisition", "check_item": "Real-time data shows no major gaps, noise, or refraction artifacts.", "criteria": "Reviewed on each line before moving to the next."},
             {"no": 12, "category": "D. Acquisition", "check_item": "Backscatter / water column data is logged, if required.", "criteria": "Logging settings confirmed before the survey starts."},
-            {"no": 13, "category": "E. USV-specific", "check_item": "Comms link to the USV is stable, with a defined fallback procedure.", "criteria": "Link tested before deployment; loss-of-comm"},
+            {"no": 13, "category": "E. USV-specific", "check_item": "Comms link to the USV is stable, with a defined fallback procedure.", "criteria": "Link tested before deployment; loss-of-comm safeguard activated."},
             {"no": 14, "category": "E. USV-specific", "check_item": "Autonomous navigation mode is calibrated (waypoint tracking accuracy).", "criteria": "Cross-track error within spec."},
             {"no": 15, "category": "E. USV-specific", "check_item": "Remote pilot/operator is monitoring the survey in real time.", "criteria": "Confirmed by the operator log."},
             {"no": 16, "category": "F. Records", "check_item": "Survey log completed (date, vessel, operator, settings, weather).", "criteria": "Per the project QA/QC procedure."},
             {"no": 17, "category": "F. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey lead."},
-            {"no": 18, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the survey time period"}
+            {"no": 18, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the survey time period."}
           ],
           "MBES AUV": [
             {"no": 1, "category": "A. Navigation", "check_item": "INS alignment is completed before the dive.", "criteria": "Alignment residual within spec."},
-            {"no": 2, "category": "A. Navigation", "check_item": "DVL bottom-lock quality is checked for the planned altitude range.", "criteria": "DVL lock confirmed across the planned altitude"},
-            {"no": 3, "category": "A. Navigation", "check_item": "Navigation fix schedule is defined (USBL/LBL/GPS surface fixes).", "criteria": "Fix interval per mission plan; drift budget calcu"},
-            {"no": 4, "category": "A. Navigation", "check_item": "Dead-reckoning drift budget between fixes is reviewed.", "criteria": "Estimated drift within the position uncertainty needed for"},
-            {"no": 5, "category": "B. Sound velocity", "check_item": "Sound velocity profile matches the AUV's operating depth range.", "criteria": "SVP covers the dive depth; updated if the AUV"},
+            {"no": 2, "category": "A. Navigation", "check_item": "DVL bottom-lock quality is checked for the planned altitude range.", "criteria": "DVL lock confirmed across the planned altitude range."},
+            {"no": 3, "category": "A. Navigation", "check_item": "Navigation fix schedule is defined (USBL/LBL/GPS surface fixes).", "criteria": "Fix interval per mission plan; drift budget calculated."},
+            {"no": 4, "category": "A. Navigation", "check_item": "Dead-reckoning drift budget between fixes is reviewed.", "criteria": "Estimated drift within the position uncertainty needed for object location."},
+            {"no": 5, "category": "B. Sound velocity", "check_item": "Sound velocity profile matches the AUV's operating depth range.", "criteria": "SVP covers the dive depth; updated if the AUV dives deeper than expected."},
             {"no": 6, "category": "C. Calibration", "check_item": "MBES-to-INS lever arm and boresight angles are calibrated.", "criteria": "Patch test / boresight run residuals within tolerance."},
             {"no": 7, "category": "C. Calibration", "check_item": "Payload timing sync with the INS is verified.", "criteria": "Latency within spec."},
             {"no": 8, "category": "D. Mission", "check_item": "Dive altitude/depth is set correctly for the desired MBES swath.", "criteria": "Matches target swath width and resolution."},
@@ -245,81 +245,81 @@
             {"no": 10, "category": "D. Mission", "check_item": "Obstacle avoidance and altitude control are functioning correctly.", "criteria": "Confirmed in pre-dive checks and the mission log."},
             {"no": 11, "category": "E. Acquisition", "check_item": "Data is reviewed for coverage gaps or artifacts.", "criteria": "Post-dive QC pass on the raw data."},
             {"no": 12, "category": "E. Acquisition", "check_item": "Backscatter data is logged, if required.", "criteria": "Logging settings confirmed before the dive."},
-            {"no": 13, "category": "F. Post-processing", "check_item": "Navigation data is post-processed (smoothing / fix integration).", "criteria": "Final navigation solution reviewed; drift c"},
-            {"no": 14, "category": "F. Post-processing", "check_item": "Sound velocity corrections are re-applied if an updated SVP is available.", "criteria": "Applied consistently across the da"},
+            {"no": 13, "category": "F. Post-processing", "check_item": "Navigation data is post-processed (smoothing / fix integration).", "criteria": "Final navigation solution reviewed; drift corrected."},
+            {"no": 14, "category": "F. Post-processing", "check_item": "Sound velocity corrections are re-applied if an updated SVP is available.", "criteria": "Applied consistently across the dataset."},
             {"no": 15, "category": "G. Records", "check_item": "Mission log completed (date, AUV ID, mission number, settings).", "criteria": "Per the project QA/QC procedure."},
             {"no": 16, "category": "G. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey lead."},
-            {"no": 17, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the dive time period wi"}
+            {"no": 17, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the dive time period with all applicable corrections."}
           ],
           "SBP Vessel": [
             {"no": 1, "category": "A. Positioning", "check_item": "GNSS positioning system is fixed and logging correctly.", "criteria": "Fix status = RTK Fixed / PPK converged, no dropouts."},
             {"no": 2, "category": "A. Positioning", "check_item": "Datum and projection match the project spec.", "criteria": "Recorded in metadata."},
             {"no": 3, "category": "A. Positioning", "check_item": "Transducer/hydrophone offset from the GNSS antenna is measured.", "criteria": "Offset accuracy per the installation drawing."},
             {"no": 4, "category": "B. Configuration", "check_item": "Mounting configuration is documented (hull-mounted vs towed).", "criteria": "Installation type and offsets recorded."},
-            {"no": 5, "category": "B. Configuration", "check_item": "If towed: cable out, depth, and layback are calculated.", "criteria": "Layback method documented (calculated or acoustically t"},
-            {"no": 6, "category": "C. Signal", "check_item": "Source signal type, frequency, and power suit the target penetration depth.", "criteria": "Matches the expected sub-bottom target dep"},
-            {"no": 7, "category": "C. Signal", "check_item": "A penetration test / calibration line is run before the survey.", "criteria": "Confirms adequate penetration and resolution at the si"},
-            {"no": 8, "category": "D. Velocity", "check_item": "Sediment velocity value is documented with a source.", "criteria": "Value and reference (core sample or literature) recorded in met"},
+            {"no": 5, "category": "B. Configuration", "check_item": "If towed: cable out, depth, and layback are calculated.", "criteria": "Layback method documented (calculated or acoustically tracked)."},
+            {"no": 6, "category": "C. Signal", "check_item": "Source signal type, frequency, and power suit the target penetration depth.", "criteria": "Matches the expected sub-bottom target depth."},
+            {"no": 7, "category": "C. Signal", "check_item": "A penetration test / calibration line is run before the survey.", "criteria": "Confirms adequate penetration and resolution at the site."},
+            {"no": 8, "category": "D. Velocity", "check_item": "Sediment velocity value is documented with a source.", "criteria": "Value and reference (core sample or literature) recorded in metadata."},
             {"no": 9, "category": "E. Acquisition", "check_item": "Line spacing is adequate for target detection and line-to-line correlation.", "criteria": "Meets survey spec."},
             {"no": 10, "category": "E. Acquisition", "check_item": "Record quality is checked for noise, ringing, or multiples.", "criteria": "Reviewed on each line before moving to the next."},
             {"no": 11, "category": "F. USV-specific", "check_item": "Comms link to the USV is stable, with a defined fallback procedure.", "criteria": "Tested before deployment."},
             {"no": 12, "category": "F. USV-specific", "check_item": "Autonomous navigation tracking accuracy is confirmed.", "criteria": "Cross-track error within spec."},
             {"no": 13, "category": "G. Records", "check_item": "Survey log completed.", "criteria": "Per the project QA/QC procedure."},
             {"no": 14, "category": "G. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey lead."},
-            {"no": 15, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the survey time period"}
+            {"no": 15, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the survey time period."}
           ],
           "SBP AUV": [
             {"no": 1, "category": "A. Navigation", "check_item": "INS alignment is completed before the dive.", "criteria": "Alignment residual within spec."},
-            {"no": 2, "category": "A. Navigation", "check_item": "Navigation fix schedule and drift budget are reviewed.", "criteria": "Same requirement as MBES-AUV; drift budget within the targe"},
+            {"no": 2, "category": "A. Navigation", "check_item": "Navigation fix schedule and drift budget are reviewed.", "criteria": "Same requirement as MBES-AUV; drift budget within the target accuracy."},
             {"no": 3, "category": "B. Offset", "check_item": "SBP-to-INS lever arm offset is calibrated.", "criteria": "Matches the installation drawing."},
-            {"no": 4, "category": "B. Offset", "check_item": "Altitude/standoff distance is controlled for good acoustic coupling.", "criteria": "Within the manufacturer-recommended range for SBP"},
+            {"no": 4, "category": "B. Offset", "check_item": "Altitude/standoff distance is controlled for good acoustic coupling.", "criteria": "Within the manufacturer-recommended range for SBP operation."},
             {"no": 5, "category": "C. Signal", "check_item": "Source signal settings suit the target penetration depth.", "criteria": "Matches the expected sub-bottom target and sediment type."},
             {"no": 6, "category": "C. Signal", "check_item": "Penetration performance is verified in-situ.", "criteria": "Confirmed on a test line or early in the survey."},
             {"no": 7, "category": "D. Velocity", "check_item": "Sediment velocity value is documented with a source.", "criteria": "Recorded in metadata."},
             {"no": 8, "category": "E. Mission", "check_item": "Battery/power margin is sufficient for the mission duration.", "criteria": "Per the AUV operating procedure."},
             {"no": 9, "category": "F. Acquisition", "check_item": "Data is reviewed for coverage gaps, noise, or loss of penetration.", "criteria": "Post-dive QC pass."},
             {"no": 10, "category": "G. Post-processing", "check_item": "Navigation data is post-processed and drift corrected.", "criteria": "Same requirement as MBES-AUV."},
-            {"no": 11, "category": "G. Post-processing", "check_item": "Sediment velocity / depth conversion matches the Error_Budget assumptions.", "criteria": "Cross-checked against the Error_B"},
+            {"no": 11, "category": "G. Post-processing", "check_item": "Sediment velocity / depth conversion matches the Error_Budget assumptions.", "criteria": "Cross-checked against the Error_Budget document."},
             {"no": 12, "category": "H. Records", "check_item": "Mission log completed.", "criteria": "Per the project QA/QC procedure."},
             {"no": 13, "category": "H. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey lead."},
-            {"no": 14, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the dive time period wi"}
+            {"no": 14, "category": "Tide Applied", "check_item": "Verified tide/water level data is applied to the final dataset.", "criteria": "Tide data correctly covers the dive time period with all applicable corrections."}
           ],
           "SSS Towed": [
             {"no": 1, "category": "A. Positioning", "check_item": "Vessel GNSS positioning is fixed and logging correctly.", "criteria": "RTK/PPK fix maintained throughout the line."},
-            {"no": 2, "category": "A. Positioning", "check_item": "Towfish position is tracked (USBL/beacon) or calculated by layback.", "criteria": "USBL/acoustic tracking preferred over calcula"},
-            {"no": 3, "category": "A. Positioning", "check_item": "If using calculated layback: cable-out, depth, and tow-point offset are correct.", "criteria": "Cable counter calibrated; tow po"},
-            {"no": 4, "category": "B. Tow configuration", "check_item": "Cable-out vs water depth is monitored to keep the fish at the right depth.", "criteria": "Fish depth matches the survey pl"},
-            {"no": 5, "category": "B. Tow configuration", "check_item": "Fish altitude above the seabed is controlled within the target range.", "criteria": "Typically 10-20% of the selected rang"},
-            {"no": 6, "category": "B. Tow configuration", "check_item": "Layback / cable catenary effects are included in the position accuracy budget.", "criteria": "Documented in Error_Budget o"},
+            {"no": 2, "category": "A. Positioning", "check_item": "Towfish position is tracked (USBL/beacon) or calculated by layback.", "criteria": "USBL/acoustic tracking preferred over calculated layback."},
+            {"no": 3, "category": "A. Positioning", "check_item": "If using calculated layback: cable-out, depth, and tow-point offset are correct.", "criteria": "Cable counter calibrated; tow point location verified."},
+            {"no": 4, "category": "B. Tow configuration", "check_item": "Cable-out vs water depth is monitored to keep the fish at the right depth.", "criteria": "Fish depth matches the survey plan (typically 10-20% of range)."},
+            {"no": 5, "category": "B. Tow configuration", "check_item": "Fish altitude above the seabed is controlled within the target range.", "criteria": "Typically 10-20% of the selected range setting."},
+            {"no": 6, "category": "B. Tow configuration", "check_item": "Layback / cable catenary effects are included in the position accuracy budget.", "criteria": "Documented in Error_Budget or similar."},
             {"no": 7, "category": "C. Sonar settings", "check_item": "Range scale and vessel speed avoid gaps and excess overlap.", "criteria": "Speed-to-range ratio within the recommended limit."},
             {"no": 8, "category": "C. Sonar settings", "check_item": "Line spacing gives the required overlap between adjacent swaths.", "criteria": "Meets survey spec (e.g., 100-120% coverage)."},
-            {"no": 9, "category": "C. Sonar settings", "check_item": "Time-varying gain (TVG) and other gain settings suit the bottom type.", "criteria": "Checked on a test line; no saturation or"},
+            {"no": 9, "category": "C. Sonar settings", "check_item": "Time-varying gain (TVG) and other gain settings suit the bottom type.", "criteria": "Checked on a test line; no saturation or spikes."},
             {"no": 10, "category": "D. Data quality", "check_item": "Nadir gap is within acceptable limits for target detection.", "criteria": "Matches the project requirement."},
-            {"no": 11, "category": "D. Data quality", "check_item": "Along-track and across-track resolution meets the detection requirement.", "criteria": "Confirmed against a known feature or t"},
-            {"no": 12, "category": "D. Data quality", "check_item": "Mosaic/waterfall display is checked for seams, dropouts, or speed artifacts.", "criteria": "Reviewed after each line and again"},
+            {"no": 11, "category": "D. Data quality", "check_item": "Along-track and across-track resolution meets the detection requirement.", "criteria": "Confirmed against a known feature or target size."},
+            {"no": 12, "category": "D. Data quality", "check_item": "Mosaic/waterfall display is checked for seams, dropouts, or speed artifacts.", "criteria": "Reviewed after each line and again after processing."},
             {"no": 13, "category": "E. Cross-check", "check_item": "Features are correlated across overlapping/adjacent lines.", "criteria": "Visual cross-line QC performed."},
             {"no": 14, "category": "E. Cross-check", "check_item": "Contacts/anomalies are logged with position, line number, and range.", "criteria": "Per the project contact log procedure."},
             {"no": 15, "category": "F. Records", "check_item": "Survey log completed (date, vessel, tow configuration, settings).", "criteria": "Per the project QA/QC procedure."},
             {"no": 16, "category": "F. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey lead."}
           ],
           "Cross Comparison": [
-            {"no": 1, "category": "A. Datum", "check_item": "All datasets use the same horizontal datum (e.g., same UTM zone).", "criteria": "Check MBES, AUV, and SBP metadata for a matching datu"},
-            {"no": 2, "category": "A. Datum", "check_item": "All datasets use the same vertical datum (chart datum, MSL, or ellipsoid).", "criteria": "Convert all data to one vertical datum befor"},
+            {"no": 1, "category": "A. Datum", "check_item": "All datasets use the same horizontal datum (e.g., same UTM zone).", "criteria": "Check MBES, AUV, and SBP metadata for a matching datum system."},
+            {"no": 2, "category": "A. Datum", "check_item": "All datasets use the same vertical datum (chart datum, MSL, or ellipsoid).", "criteria": "Convert all data to one vertical datum before comparison."},
             {"no": 3, "category": "A. Datum", "check_item": "Time reference (UTC) is synced across all systems.", "criteria": "Time offset within equipment spec (typically < 1 ms for MBES)."},
-            {"no": 4, "category": "B. Calibration", "check_item": "MBES patch test is complete (latency, roll, pitch, yaw).", "criteria": "Done per IHO S-44 / manufacturer guidance, with a report"},
+            {"no": 4, "category": "B. Calibration", "check_item": "MBES patch test is complete (latency, roll, pitch, yaw).", "criteria": "Done per IHO S-44 / manufacturer guidance, with a report on file."},
             {"no": 5, "category": "B. Calibration", "check_item": "GNSS antenna to transducer/DVL offset is checked.", "criteria": "Offset error under 2 cm (survey grade)."},
             {"no": 6, "category": "B. Calibration", "check_item": "AUV INS/DVL calibration and drift check done.", "criteria": "Drift rate within spec (typically 0.1-0.5% of distance traveled)."},
             {"no": 7, "category": "B. Calibration", "check_item": "SBP transducer offset from reference point is checked.", "criteria": "Matches the installation offset drawing."},
-            {"no": 8, "category": "C. Corrections", "check_item": "Sound velocity profile (SVP) is current and covers the survey area.", "criteria": "SVP age under 24 hours, or more frequent if w"},
+            {"no": 8, "category": "C. Corrections", "check_item": "Sound velocity profile (SVP) is current and covers the survey area.", "criteria": "SVP age under 24 hours, or more frequent if warranted."},
             {"no": 9, "category": "C. Corrections", "check_item": "Tide / water level correction applied.", "criteria": "Uses the nearest tide station, or RTK tide, as appropriate."},
-            {"no": 10, "category": "C. Corrections", "check_item": "SBP sediment velocity value is documented with a source.", "criteria": "State the velocity (m/s) and cite a core sample or refe"},
+            {"no": 10, "category": "C. Corrections", "check_item": "SBP sediment velocity value is documented with a source.", "criteria": "State the velocity (m/s) and cite a core sample or reference."},
             {"no": 11, "category": "D. Navigation", "check_item": "AUV navigation fixes (USBL/LBL/GPS) occur at proper intervals.", "criteria": "Fix spacing follows the mission plan."},
-            {"no": 12, "category": "D. Navigation", "check_item": "AUV drift at the time of detection is within limits.", "criteria": "Accumulated drift under the project threshold (e.g., 0.5% of"},
-            {"no": 13, "category": "D. Navigation", "check_item": "Position uncertainty (THU/TVU) is calculated for each sensor.", "criteria": "Meets the survey Order per IHO S-44 (Special / 1a /"},
+            {"no": 12, "category": "D. Navigation", "check_item": "AUV drift at the time of detection is within limits.", "criteria": "Accumulated drift under the project threshold (e.g., 0.5% of range)."},
+            {"no": 13, "category": "D. Navigation", "check_item": "Position uncertainty (THU/TVU) is calculated for each sensor.", "criteria": "Meets the survey Order per IHO S-44 (Special / 1a / 1b)."},
             {"no": 14, "category": "E. Comparison", "check_item": "Horizontal distance (Delta XY) is within combined uncertainty.", "criteria": "Delta XY <= RSS(THU_A, THU_B) at 95% confidence."},
             {"no": 15, "category": "E. Comparison", "check_item": "Vertical distance (Delta Z) is within combined uncertainty.", "criteria": "Delta Z <= RSS(TVU_A, TVU_B) at 95% confidence."},
             {"no": 16, "category": "E. Comparison", "check_item": "Object shape/appearance is consistent across datasets.", "criteria": "Confirmed visually by the interpreter."},
-            {"no": 17, "category": "E. Comparison", "check_item": "Statistical test (Mahalanobis / chi-square) passed, if used.", "criteria": "Mahalanobis^2 < chi-square critical value (df=2, 95%"},
+            {"no": 17, "category": "E. Comparison", "check_item": "Statistical test (Mahalanobis / chi-square) passed, if used.", "criteria": "Mahalanobis^2 < chi-square critical value (df=2, 95% confidence)."},
             {"no": 18, "category": "F. Records", "check_item": "Metadata recorded (date, equipment, operator, software version).", "criteria": "Per the project QA/QC procedure."},
             {"no": 19, "category": "F. Records", "check_item": "QC report reviewed and approved.", "criteria": "Signed off by the survey party chief or authorized reviewer."}
           ]
@@ -383,7 +383,7 @@
                 // Sidebar Navigation Links
                 const linkBtn = document.createElement('button');
                 linkBtn.id = `nav-${safeId}`;
-                linkBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100";
+                linkBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-[13px]";
                 linkBtn.innerHTML = `
                     <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400"></div>
                     <span class="truncate">${sheetName}</span>
@@ -394,14 +394,14 @@
                 // Dashboard Cards
                 const card = document.createElement('div');
                 card.id = `card-${safeId}`;
-                card.className = "bg-cardbg rounded-lg border border-bordercol/80 p-5 flex flex-col cursor-pointer hover:border-slate-500 transition-all duration-150 dark:bg-cardbg dark:border-bordercol/80 light:bg-slate-50 light:border-slate-200 light:hover:border-slate-300";
+                card.className = "bg-cardbg rounded-lg border border-bordercol/80 p-5 flex flex-col cursor-pointer hover:border-slate-500 transition-all duration-150 dark:bg-cardbg dark:border-bordercol/80 light:bg-slate-50 light:border-slate-200";
                 card.onclick = () => switchTab(sheetName);
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-2 bg-slate-900 text-indigo-400 rounded-md border border-slate-800 dark:bg-slate-900 dark:text-indigo-400 dark:border-slate-800 light:bg-indigo-50 light:text-indigo-600 light:border-indigo-200">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <span class="text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-300">0%</span>
+                        <span class="text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-200">0%</span>
                     </div>
                     <h4 class="text-sm font-semibold text-slate-200 dark:text-slate-200 light:text-slate-900">${sheetName}</h4>
                     <p class="text-xs text-slate-400 mt-1 mb-5 flex-1 leading-relaxed dark:text-slate-400 light:text-slate-600">Complete mandatory quality verification checks for this platform.</p>
@@ -453,7 +453,7 @@
                             <td class="py-3 px-4 border-r border-bordercol/60 font-medium text-slate-200 dark:border-bordercol/60 dark:text-slate-200 light:border-slate-200 light:text-slate-900">${item.check_item}</td>
                             <td class="py-3 px-4 border-r border-bordercol/60 text-slate-400 text-[11px] leading-relaxed dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${item.criteria}</td>
                             <td class="py-2 px-3 border-r border-bordercol/60 text-center dark:border-bordercol/60 light:border-slate-200">
-                                <select class="result-select w-full bg-slate-900 border border-slate-700 text-slate-300 py-1 px-2 rounded text-xs focus:outline-none focus:border-indigo-500 transition-colors dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300 light:bg-white light:border-slate-300 light:text-slate-900" onchange="updateRowColor(this, '${sheetName}')">
+                                <select class="result-select w-full bg-slate-900 border border-slate-700 text-slate-300 py-1 px-2 rounded text-xs focus:outline-none focus:border-indigo-500 transition duration-150 dark:bg-slate-900 dark:text-slate-300 light:bg-white light:text-slate-900 light:border-slate-300" onchange="updateRowColor(this, '${sheetName}')">
                                     <option value="" disabled selected>-</option>
                                     <option value="Pass">Pass</option>
                                     <option value="Fail">Fail</option>
@@ -461,13 +461,13 @@
                                 </select>
                             </td>
                             <td class="py-2 px-3 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">
-                                <textarea rows="1" class="w-full bg-transparent border-0 focus:ring-0 resize-none text-xs p-1 text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 dark:placeholder-slate-600 light:text-slate-900 light:placeholder-slate-400" placeholder="Notes..."></textarea>
+                                <textarea rows="1" class="w-full bg-transparent border-0 focus:ring-0 resize-none text-xs p-1 text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 light:text-slate-900" placeholder="Add notes..."></textarea>
                             </td>
                             <td class="py-2 px-3 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">
-                                <input type="text" class="checked-by w-full bg-transparent border-0 focus:ring-0 text-xs p-1 uppercase text-center text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 dark:placeholder-slate-600 light:text-slate-900 light:placeholder-slate-400" placeholder="Initials">
+                                <input type="text" class="checked-by w-full bg-transparent border-0 focus:ring-0 text-xs p-1 uppercase text-center text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 light:text-slate-900" placeholder="Initials">
                             </td>
                             <td class="py-2 px-3">
-                                <input type="date" class="date-field w-full bg-transparent border-0 focus:ring-0 text-xs p-1 text-slate-400 focus:outline-none dark:text-slate-400 light:text-slate-600">
+                                <input type="date" class="date-field w-full bg-transparent border-0 focus:ring-0 text-xs p-1 text-slate-400 focus:outline-none dark:text-slate-400 light:text-slate-900">
                             </td>
                         </tr>
                     `;
@@ -500,7 +500,7 @@
             
             // Reset Sidebar Styling for all links
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100";
+                btn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-[13px]";
                 const indicator = btn.querySelector('.indicator');
                 if (indicator) indicator.className = "w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400";
                 const icon = btn.querySelector('.indicator-icon');
@@ -510,7 +510,7 @@
             // Set Active Styling
             const activeBtn = document.getElementById(`nav-${safeId}`) || document.getElementById('nav-dashboard') || document.getElementById('nav-summary');
             if (activeBtn) {
-                activeBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800/50 indicator-icon dark:bg-slate-900/80 dark:text-indigo-400 light:bg-slate-100 light:text-indigo-600 light:border-slate-300/50";
+                activeBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-700 nav-btn text-[13px]";
                 const activeIndicator = activeBtn.querySelector('.indicator');
                 if (activeIndicator) activeIndicator.className = "w-1.5 h-1.5 rounded-full bg-indigo-500 indicator dark:bg-indigo-500 light:bg-indigo-600";
                 const activeIcon = activeBtn.querySelector('.indicator-icon');
@@ -595,7 +595,7 @@
                         html += `
                             <tr class="hover:bg-slate-800/40 transition-colors dark:hover:bg-slate-800/40 light:hover:bg-slate-50">
                                 <td class="py-2.5 px-4 border-r border-bordercol/60 font-medium text-slate-400 dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${sheetName}</td>
-                                <td class="py-2.5 px-4 text-center border-r border-bordercol/60 text-slate-500 dark:border-bordercol/60 dark:text-slate-500 light:border-slate-200 light:text-slate-600">${item.no}</td>
+                                <td class="py-2.5 px-4 text-center border-r border-bordercol/60 text-slate-500 dark:border-bordercol/60 dark:text-slate-500 light:border-slate-200 light:text-slate-500">${item.no}</td>
                                 <td class="py-2.5 px-4 border-r border-bordercol/60 text-slate-200 dark:border-bordercol/60 dark:text-slate-200 light:border-slate-200 light:text-slate-900">${item.check_item}</td>
                                 <td class="py-2.5 px-4 text-center border-bordercol/60 ${resultClass} dark:border-bordercol/60 light:border-slate-200">${displayResult}</td>
                             </tr>
@@ -649,9 +649,9 @@
                     badge.textContent = `${percentage}%`;
                     
                     if(percentage === 100) {
-                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded status-badge dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 light:bg-emerald-50 light:text-emerald-600 light:border-emerald-300";
+                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded status-badge dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 light:bg-emerald-50 light:text-emerald-700 light:border-emerald-200";
                     } else {
-                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-300";
+                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-200";
                     }
                 }
             });
@@ -678,7 +678,7 @@
             btn.className = "bg-emerald-600 text-white border border-emerald-500 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-emerald-600 light:bg-emerald-600";
             setTimeout(() => {
                 btn.textContent = originalText;
-                btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-900 light:border-slate-400";
+                btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 light:text-slate-900";
             }, 1200);
         }
 
@@ -725,11 +725,25 @@
                 
                 const ws = XLSX.utils.aoa_to_sheet(rows);
                 
-                // Auto-size columns slightly
+                // Auto-size columns
                 ws['!cols'] = [
                     { wch: 5 }, { wch: 20 }, { wch: 45 }, { wch: 40 }, 
                     { wch: 10 }, { wch: 25 }, { wch: 12 }, { wch: 12 }
                 ];
+
+                // Set row heights based on content
+                if (ws['!rows'] === undefined) ws['!rows'] = [];
+                rows.forEach((row, rowIndex) => {
+                    if (rowIndex > 0) { // Skip header rows
+                        const notesContent = row[5]; // Notes column (index 5)
+                        if (notesContent) {
+                            const lineCount = (notesContent.match(/\n/g) || []).length + 1;
+                            const baseHeight = 15;
+                            const rowHeight = baseHeight + (lineCount * 15);
+                            ws['!rows'][rowIndex] = { hpt: rowHeight };
+                        }
+                    }
+                });
 
                 XLSX.utils.book_append_sheet(wb, ws, sheetName);
             });
