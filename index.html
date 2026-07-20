@@ -48,7 +48,6 @@
             body { background: white !important; color: black !important; }
             #sidebar, #top-header, .no-print { display: none !important; }
             #main-content { margin: 0 !important; padding: 0 !important; overflow: visible !important; height: auto !important; display: block !important; }
-            .print-only { display: block !important; }
             #dashboard-view { display: none !important; }
             .sheet-view.active-sheet, #summary-view.active-sheet { display: block !important; }
             .sheet-view:not(.active-sheet), #summary-view:not(.active-sheet) { display: none !important; }
@@ -71,13 +70,23 @@
 <body class="flex h-screen overflow-hidden text-slate-100 bg-darkbg">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="w-64 bg-slate-950 border-r border-slate-800 flex flex-col z-20">
-        <div class="p-6 border-b border-slate-800/80 flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+    <aside id="sidebar" class="w-64 bg-slate-950 border-r border-slate-800 flex flex-col z-20 shrink-0">
+        <div class="p-6 border-b border-slate-800/80 flex flex-col space-y-5">
+            <!-- App Title -->
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                </div>
+                <h1 class="text-base font-semibold tracking-wider text-slate-200">QC DASHBOARD</h1>
             </div>
-            <h1 class="text-base font-semibold tracking-wider text-slate-200">QC DASHBOARD</h1>
+            
+            <!-- Global Area/Block Name Input -->
+            <div class="flex flex-col space-y-1.5 no-print">
+                <label for="global-area-name" class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Area / Block Name</label>
+                <input type="text" id="global-area-name" placeholder="Enter block name..." class="bg-slate-900 border border-slate-700/80 rounded px-2.5 py-1.5 text-xs text-indigo-300 focus:outline-none focus:border-indigo-500 placeholder-slate-600 transition-colors w-full shadow-inner" oninput="updateAreaName(this.value)">
+            </div>
         </div>
+        
         <nav class="flex-1 overflow-y-auto py-4 space-y-1 px-3">
             <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800/80 nav-btn">
                 <svg class="w-4 h-4 indicator-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
@@ -95,18 +104,22 @@
                 <!-- Dynamically populated links -->
             </div>
         </nav>
-        <div class="p-4 border-t border-slate-900 text-xs text-slate-500 flex items-center justify-between">
-            <span>v2.3 Dark Mode</span>
+        <div class="p-4 border-t border-slate-900 text-xs text-slate-500 flex items-center justify-between shrink-0">
+            <span>v2.4 Dark Mode</span>
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col h-screen relative bg-darkbg">
+    <div class="flex-1 flex flex-col h-screen relative bg-darkbg overflow-hidden">
         
         <!-- Header -->
-        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10">
-            <h2 id="header-title" class="text-base font-medium text-slate-200">Overview Dashboard</h2>
+        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10 shrink-0">
+            <div class="flex flex-col justify-center">
+                <h2 id="header-title" class="text-base font-medium text-slate-200">Overview Dashboard</h2>
+                <!-- Global Name Display for UI -->
+                <div class="text-[11px] text-slate-400 mt-0.5">Area/Block: <span class="text-indigo-400 font-medium area-name-text">Not Specified</span></div>
+            </div>
             
             <div class="flex items-center space-x-3">
                 <!-- Bulk Fill (Hidden on Dashboard) -->
@@ -154,14 +167,24 @@
 
             <!-- Summarized Report View -->
             <div id="summary-view" class="hidden-view max-w-5xl mx-auto pb-10">
-                <div class="mb-6 print-only" style="display:none;">
-                    <h3 class="text-xl font-bold text-slate-100">QC Summarized Report</h3>
-                    <p class="text-xs text-slate-400">Consolidated Quality Control Results</p>
+                <!-- Print Header for Summary -->
+                <div class="hidden print:flex justify-between items-end mb-6 border-b border-gray-300 pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-black">QC Summarized Report</h3>
+                        <p class="text-xs text-gray-600">Consolidated Quality Control Results</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Area / Block</p>
+                        <p class="text-sm font-bold text-black area-name-text">Not Specified</p>
+                    </div>
                 </div>
+                
+                <!-- Screen UI Header -->
                 <div class="mb-6 no-print">
                     <h3 class="text-xl font-semibold text-slate-100">Summarized Report</h3>
                     <p class="text-xs text-slate-400 mt-1">Consolidated view of all checklist results across all pages.</p>
                 </div>
+
                 <div class="bg-cardbg border border-bordercol/80 rounded-lg overflow-hidden">
                     <table class="w-full text-left border-collapse" id="summary-table">
                         <!-- Dynamically populated via JS -->
@@ -290,6 +313,14 @@
         let appState = {};
         let activeTabID = 'dashboard';
 
+        // Function to update the global Area / Block Name
+        function updateAreaName(val) {
+            const displayVal = val.trim() === '' ? 'Not Specified' : val.trim();
+            document.querySelectorAll('.area-name-text').forEach(el => {
+                el.textContent = displayVal;
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const sidebarLinks = document.getElementById('sidebar-links');
             const sheetsContainer = document.getElementById('sheets-container');
@@ -344,10 +375,18 @@
                 sheetDiv.dataset.sheetName = sheetName;
                 
                 let tableHTML = `
-                    <div class="px-6 py-4 border-b border-bordercol/80 bg-slate-900/50 print-only" style="display:none;">
-                        <h3 class="text-lg font-bold text-slate-100">QC Checklist: ${sheetName}</h3>
-                        <p class="text-xs text-slate-400">Official Quality Control Document</p>
+                    <!-- Print Header for Checklist -->
+                    <div class="hidden print:flex justify-between items-end px-6 py-4 border-b border-slate-300 bg-slate-100 mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-black">QC Checklist: ${sheetName}</h3>
+                            <p class="text-xs text-gray-600">Official Quality Control Document</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Area / Block</p>
+                            <p class="text-sm font-bold text-black area-name-text">Not Specified</p>
+                        </div>
                     </div>
+                    
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
@@ -592,13 +631,18 @@
         // Integrated Excel Export Feature using SheetJS
         function exportToExcel() {
             const wb = XLSX.utils.book_new();
+            const areaName = document.getElementById('global-area-name').value.trim() || 'Not Specified';
             
             Object.keys(qcData).forEach(sheetName => {
                 const safeId = sheetName.replace(/\s+/g, '-');
                 const sheetDiv = document.getElementById(`sheet-${safeId}`);
                 const rows = [];
                 
-                // Header
+                // Header with Area/Block Name
+                rows.push(["Area/Block Name:", areaName]);
+                rows.push([]); // Empty spacing row
+                
+                // Table Headers
                 rows.push(["#", "Category", "Check Item", "Criteria / Tolerance", "Result", "Notes", "Checked By", "Date"]);
                 
                 // Data Rows
