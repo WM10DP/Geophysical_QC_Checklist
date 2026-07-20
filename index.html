@@ -30,6 +30,16 @@
             color: #f8fafc;
         }
 
+        /* Light mode overrides */
+        html:not(.dark) body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        html:not(.dark) {
+            background-color: #f8fafc;
+        }
+
         .hidden-view { display: none !important; }
 
         /* Custom Dark Scrollbar */
@@ -38,10 +48,24 @@
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
+        /* Light mode scrollbar */
+        html:not(.dark) ::-webkit-scrollbar-track { background: #f8fafc; }
+        html:not(.dark) ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+        html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
         /* Modern Select Color States in Dark Mode */
         select.status-pass { background-color: rgba(22, 101, 52, 0.4); color: #4ade80; border-color: #15803d; font-weight: 600; }
         select.status-fail { background-color: rgba(153, 27, 27, 0.4); color: #f87171; border-color: #b91c1c; font-weight: 600; }
         select.status-na { background-color: rgba(51, 65, 85, 0.5); color: #cbd5e1; border-color: #475569; font-weight: 600; }
+
+        /* Theme toggle button animation */
+        .theme-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
 
         @media print {
             @page { size: A4 landscape; margin: 1cm; }
@@ -68,85 +92,91 @@
         }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden text-slate-100 bg-darkbg">
+<body class="flex h-screen overflow-hidden text-slate-100 bg-darkbg dark:text-slate-100 dark:bg-darkbg">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="w-64 bg-slate-950 border-r border-slate-800 flex flex-col z-20">
-        <div class="p-6 border-b border-slate-800/80">
+    <aside id="sidebar" class="w-64 bg-slate-950 border-r border-slate-800 flex flex-col z-20 dark:bg-slate-950 dark:border-slate-800 light:bg-slate-50 light:border-slate-200">
+        <div class="p-6 border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200/80">
             <div class="flex items-center space-x-3 mb-4">
                 <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h2m0 0H7a2 2 0 00-2-2m2 2h10a2 2 0 002-2m0 0V7a2 2 0 00-2-2h-2.5a2 2 0 00-1 3.6L7 11"></path></svg>
                 </div>
-                <h1 class="text-base font-semibold tracking-wider text-slate-200">QC DASHBOARD</h1>
+                <h1 class="text-base font-semibold tracking-wider text-slate-200 dark:text-slate-200 light:text-slate-900">QC DASHBOARD</h1>
             </div>
             <input 
                 type="text" 
                 id="area-block-name" 
                 placeholder="Area / Block Name" 
-                class="w-full px-3 py-2 bg-slate-900 border border-slate-700 text-slate-200 placeholder-slate-500 rounded text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/30 transition-colors"
+                class="w-full px-3 py-2 bg-slate-900 border border-slate-700 text-slate-200 placeholder-slate-500 rounded text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-200 light:bg-white light:border-slate-300 light:text-slate-900 light:placeholder-slate-400"
             >
         </div>
         <nav class="flex-1 overflow-y-auto py-4 space-y-1 px-3">
-            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800 border-opacity-50">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800/50 indicator-icon dark:bg-slate-900/80 light:bg-slate-100 light:text-indigo-600 light:border-slate-300/50">
                 <svg class="w-4 h-4 indicator-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path></svg>
                 <span class="text-sm">Overview</span>
             </button>
             
-            <div class="px-3 pt-5 pb-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Reports</div>
-            <button onclick="switchTab('summary')" id="nav-summary" class="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm">
-                <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator"></div>
+            <div class="px-3 pt-5 pb-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-500 light:text-slate-400">Reports</div>
+            <button onclick="switchTab('summary')" id="nav-summary" class="w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100">
+                <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400"></div>
                 <span class="text-sm">Summarized Report</span>
             </button>
 
-            <div class="px-3 pt-5 pb-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Checklists</div>
+            <div class="px-3 pt-5 pb-2 text-[11px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-500 light:text-slate-400">Checklists</div>
             <div id="sidebar-links" class="space-y-1">
                 <!-- Dynamically populated links -->
             </div>
         </nav>
-        <div class="p-4 border-t border-slate-900 text-xs text-slate-500 flex items-center justify-between">
-            <span>v2.3 Dark Mode</span>
+        <div class="p-4 border-t border-slate-900 text-xs text-slate-500 flex items-center justify-between dark:border-slate-900 light:border-slate-200">
+            <span class="dark:text-slate-500 light:text-slate-400">v2.3 Theme Toggle</span>
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col h-screen relative bg-darkbg">
+    <div class="flex-1 flex flex-col h-screen relative bg-darkbg dark:bg-darkbg light:bg-white">
         
         <!-- Header -->
-        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10">
-            <h2 id="header-title" class="text-base font-medium text-slate-200">Overview Dashboard</h2>
+        <header id="top-header" class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur h-16 flex items-center justify-between px-8 z-10 dark:border-slate-800/80 dark:bg-slate-900/40 light:border-slate-200 light:bg-white/80">
+            <h2 id="header-title" class="text-base font-medium text-slate-200 dark:text-slate-200 light:text-slate-900">Overview Dashboard</h2>
             
             <div class="flex items-center space-x-3">
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" id="theme-toggle" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition duration-150 theme-toggle dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-100 light:hover:bg-slate-200 light:border-slate-300/60 light:text-slate-600" title="Toggle light/dark mode">
+                    <svg id="sun-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1m-16 0H1m15.364 1.636l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+
                 <!-- Bulk Fill (Hidden on Dashboard) -->
-                <div id="bulk-fill-tool" class="hidden flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-md border border-slate-800">
-                    <span class="text-[11px] font-medium text-slate-400 uppercase px-2">Bulk Fill:</span>
-                    <input type="text" id="bulk-name" placeholder="Initials" class="text-xs px-2.5 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 placeholder-slate-600 focus:border-indigo-500 focus:outline-none">
-                    <input type="date" id="bulk-date" class="text-xs px-2 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 focus:border-indigo-500 focus:outline-none">
-                    <button onclick="applyBulkFill()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150">Apply</button>
+                <div id="bulk-fill-tool" class="hidden flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-md border border-slate-800 dark:bg-slate-900/90 dark:border-slate-800 light:bg-white light:border-slate-300">
+                    <span class="text-[11px] font-medium text-slate-400 uppercase px-2 dark:text-slate-400 light:text-slate-600">Bulk Fill:</span>
+                    <input type="text" id="bulk-name" placeholder="Initials" class="text-xs px-2.5 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 placeholder-slate-600 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 dark:border-slate-700/80 light:bg-slate-50 light:border-slate-300 light:text-slate-900 light:placeholder-slate-500">
+                    <input type="date" id="bulk-date" class="text-xs px-2 py-1 bg-slate-950 border border-slate-700/80 rounded text-slate-200 focus:border-indigo-500 focus:outline-none dark:bg-slate-950 dark:border-slate-700/80 light:bg-slate-50 light:border-slate-300 light:text-slate-900">
+                    <button onclick="applyBulkFill()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-900 light:border-slate-400">Apply</button>
                 </div>
                 
                 <!-- Export to Excel Button -->
-                <button onclick="exportToExcel()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 hover:border-slate-600 transition-all duration-150 text-xs font-medium">
-                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                <button onclick="exportToExcel()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 text-xs font-medium transition duration-150 dark:bg-slate-900 dark:hover:bg-slate-800 dark:text-slate-300 light:bg-emerald-50 light:hover:bg-emerald-100 light:text-emerald-600 light:border-emerald-300/60">
+                    <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-400 light:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                     <span>Export Excel</span>
                 </button>
 
                 <!-- Export / Print PDF Button -->
-                <button onclick="printPDF()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/50 hover:border-indigo-400/80 transition-all duration-150 text-xs font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2"></path></svg>
+                <button onclick="printPDF()" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/50 hover:border-indigo-400/50 text-xs font-medium transition duration-150 dark:bg-indigo-600 dark:hover:bg-indigo-500 light:bg-indigo-500 light:hover:bg-indigo-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     <span>Export PDF</span>
                 </button>
             </div>
         </header>
 
         <!-- Dynamic Content Area -->
-        <main id="main-content" class="flex-1 overflow-y-auto p-8">
+        <main id="main-content" class="flex-1 overflow-y-auto p-8 dark:bg-darkbg light:bg-white">
             
             <!-- Dashboard View -->
             <div id="dashboard-view" class="max-w-6xl mx-auto">
                 <div class="mb-8">
-                    <h3 class="text-xl font-semibold text-slate-100">Quality Control Overview</h3>
-                    <p class="text-xs text-slate-400 mt-1">Monitor survey execution and validation status across all platforms.</p>
+                    <h3 class="text-xl font-semibold text-slate-100 dark:text-slate-100 light:text-slate-900">Quality Control Overview</h3>
+                    <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-slate-600">Monitor survey execution and validation status across all platforms.</p>
                 </div>
                 
                 <!-- Stats Grid -->
@@ -163,14 +193,14 @@
             <!-- Summarized Report View -->
             <div id="summary-view" class="hidden-view max-w-5xl mx-auto pb-10">
                 <div class="mb-6 print-only" style="display:none;">
-                    <h3 class="text-xl font-bold text-slate-100">QC Summarized Report</h3>
-                    <p class="text-xs text-slate-400"><span id="print-area-name"></span></p>
+                    <h3 class="text-xl font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">QC Summarized Report</h3>
+                    <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600"><span id="print-area-name"></span></p>
                 </div>
                 <div class="mb-6 no-print">
-                    <h3 class="text-xl font-semibold text-slate-100">Summarized Report</h3>
-                    <p class="text-xs text-slate-400 mt-1"><span id="screen-area-name"></span></p>
+                    <h3 class="text-xl font-semibold text-slate-100 dark:text-slate-100 light:text-slate-900">Summarized Report</h3>
+                    <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-slate-600"><span id="screen-area-name"></span></p>
                 </div>
-                <div class="bg-cardbg border border-bordercol/80 rounded-lg overflow-hidden">
+                <div class="bg-cardbg border border-bordercol/80 rounded-lg overflow-hidden dark:bg-cardbg dark:border-bordercol/80 light:bg-slate-50 light:border-slate-200">
                     <table class="w-full text-left border-collapse" id="summary-table">
                         <!-- Dynamically populated via JS -->
                     </table>
@@ -298,8 +328,42 @@
         let appState = {};
         let activeTabID = 'dashboard';
         let areaBlockName = '';
+        let isDarkMode = true;
+
+        // Initialize theme from localStorage
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            isDarkMode = savedTheme ? savedTheme === 'dark' : true;
+            applyTheme();
+        }
+
+        // Toggle theme function
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            applyTheme();
+        }
+
+        // Apply theme to document
+        function applyTheme() {
+            const html = document.documentElement;
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+
+            if (isDarkMode) {
+                html.classList.add('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                html.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
+            initializeTheme();
+
             const sidebarLinks = document.getElementById('sidebar-links');
             const sheetsContainer = document.getElementById('sheets-container');
             const dashboardGrid = document.getElementById('dashboard-grid');
@@ -319,9 +383,9 @@
                 // Sidebar Navigation Links
                 const linkBtn = document.createElement('button');
                 linkBtn.id = `nav-${safeId}`;
-                linkBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm";
+                linkBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100";
                 linkBtn.innerHTML = `
-                    <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400"></div>
                     <span class="truncate">${sheetName}</span>
                 `;
                 linkBtn.onclick = () => switchTab(sheetName);
@@ -330,24 +394,24 @@
                 // Dashboard Cards
                 const card = document.createElement('div');
                 card.id = `card-${safeId}`;
-                card.className = "bg-cardbg rounded-lg border border-bordercol/80 p-5 flex flex-col cursor-pointer hover:border-slate-500 transition-all duration-150";
+                card.className = "bg-cardbg rounded-lg border border-bordercol/80 p-5 flex flex-col cursor-pointer hover:border-slate-500 transition-all duration-150 dark:bg-cardbg dark:border-bordercol/80 light:bg-slate-50 light:border-slate-200 light:hover:border-slate-300";
                 card.onclick = () => switchTab(sheetName);
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-4">
-                        <div class="p-2 bg-slate-900 text-indigo-400 rounded-md border border-slate-800">
+                        <div class="p-2 bg-slate-900 text-indigo-400 rounded-md border border-slate-800 dark:bg-slate-900 dark:text-indigo-400 dark:border-slate-800 light:bg-indigo-50 light:text-indigo-600 light:border-indigo-200">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <span class="text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge">0%</span>
+                        <span class="text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-300">0%</span>
                     </div>
-                    <h4 class="text-sm font-semibold text-slate-200">${sheetName}</h4>
-                    <p class="text-xs text-slate-400 mt-1 mb-5 flex-1 leading-relaxed">Complete mandatory quality verification checks for this platform.</p>
+                    <h4 class="text-sm font-semibold text-slate-200 dark:text-slate-200 light:text-slate-900">${sheetName}</h4>
+                    <p class="text-xs text-slate-400 mt-1 mb-5 flex-1 leading-relaxed dark:text-slate-400 light:text-slate-600">Complete mandatory quality verification checks for this platform.</p>
                     <div>
-                        <div class="flex justify-between text-[11px] text-slate-400 mb-1.5 font-medium">
+                        <div class="flex justify-between text-[11px] text-slate-400 mb-1.5 font-medium dark:text-slate-400 light:text-slate-600">
                             <span>Progress</span>
                             <span class="progress-text">0 / ${appState[sheetName].total}</span>
                         </div>
-                        <div class="w-full bg-slate-900 rounded-full h-1.5 border border-slate-800">
-                            <div class="bg-indigo-500 h-full rounded-full transition-all duration-500 progress-bar" style="width: 0%"></div>
+                        <div class="w-full bg-slate-900 rounded-full h-1.5 border border-slate-800 dark:bg-slate-900 dark:border-slate-800 light:bg-slate-100 light:border-slate-300">
+                            <div class="bg-indigo-500 h-full rounded-full transition-all duration-500 progress-bar dark:bg-indigo-500 light:bg-indigo-500" style="width: 0%"></div>
                         </div>
                     </div>
                 `;
@@ -356,54 +420,54 @@
                 // Checklists Table View
                 const sheetDiv = document.createElement('div');
                 sheetDiv.id = `sheet-${safeId}`;
-                sheetDiv.className = "sheet-view hidden-view bg-cardbg border border-bordercol/80 rounded-lg overflow-hidden";
+                sheetDiv.className = "sheet-view hidden-view bg-cardbg border border-bordercol/80 rounded-lg overflow-hidden dark:bg-cardbg dark:border-bordercol/80 light:bg-white light:border-slate-200";
                 sheetDiv.dataset.sheetName = sheetName;
                 
                 let tableHTML = `
-                    <div class="px-6 py-4 border-b border-bordercol/80 bg-slate-900/50 print-only" style="display:none;">
-                        <h3 class="text-lg font-bold text-slate-100">QC Checklist: ${sheetName}</h3>
-                        <p class="text-xs text-slate-400" id="print-sheet-area"></p>
+                    <div class="px-6 py-4 border-b border-bordercol/80 bg-slate-900/50 print-only dark:border-bordercol/80 dark:bg-slate-900/50 light:border-slate-200 light:bg-slate-50" style="display:none;">
+                        <h3 class="text-lg font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">QC Checklist: ${sheetName}</h3>
+                        <p class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600" id="print-sheet-area"></p>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-slate-900/80 text-slate-400 text-[11px] uppercase tracking-wider border-b border-bordercol/80 font-semibold">
-                                    <th class="py-3 px-4 w-12 text-center border-r border-bordercol/60">#</th>
-                                    <th class="py-3 px-4 w-1/6 border-r border-bordercol/60">Category</th>
-                                    <th class="py-3 px-4 w-1/4 border-r border-bordercol/60">Check Item</th>
-                                    <th class="py-3 px-4 w-1/4 border-r border-bordercol/60">Criteria</th>
-                                    <th class="py-3 px-4 w-28 border-r border-bordercol/60 text-center">Result</th>
-                                    <th class="py-3 px-4 border-r border-bordercol/60">Notes</th>
-                                    <th class="py-3 px-4 w-24 border-r border-bordercol/60 text-center">Sign</th>
+                                <tr class="bg-slate-900/80 text-slate-400 text-[11px] uppercase tracking-wider border-b border-bordercol/80 font-semibold dark:bg-slate-900/80 dark:text-slate-400 dark:border-bordercol/80 light:bg-slate-100 light:text-slate-600 light:border-slate-200">
+                                    <th class="py-3 px-4 w-12 text-center border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">#</th>
+                                    <th class="py-3 px-4 w-1/6 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Category</th>
+                                    <th class="py-3 px-4 w-1/4 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Check Item</th>
+                                    <th class="py-3 px-4 w-1/4 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Criteria</th>
+                                    <th class="py-3 px-4 w-28 border-r border-bordercol/60 text-center dark:border-bordercol/60 light:border-slate-200">Result</th>
+                                    <th class="py-3 px-4 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Notes</th>
+                                    <th class="py-3 px-4 w-24 border-r border-bordercol/60 text-center dark:border-bordercol/60 light:border-slate-200">Sign</th>
                                     <th class="py-3 px-4 w-32 text-center">Date</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-slate-300 text-xs divide-y divide-bordercol/60">
+                            <tbody class="text-slate-300 text-xs divide-y divide-bordercol/60 dark:text-slate-300 light:text-slate-700">
                 `;
 
                 qcData[sheetName].forEach(item => {
                     tableHTML += `
-                        <tr class="hover:bg-slate-800/40 transition-colors">
-                            <td class="py-3 px-4 text-center font-medium border-r border-bordercol/60 text-slate-400">${item.no}</td>
-                            <td class="py-3 px-4 border-r border-bordercol/60 text-slate-400">${item.category}</td>
-                            <td class="py-3 px-4 border-r border-bordercol/60 font-medium text-slate-200">${item.check_item}</td>
-                            <td class="py-3 px-4 border-r border-bordercol/60 text-slate-400 text-[11px] leading-relaxed">${item.criteria}</td>
-                            <td class="py-2 px-3 border-r border-bordercol/60 text-center">
-                                <select class="result-select w-full bg-slate-900 border border-slate-700 text-slate-300 py-1 px-2 rounded text-xs focus:outline-none focus:border-indigo-500 transition-colors onchange="updateRowColor(this, '${sheetName}')">
+                        <tr class="hover:bg-slate-800/40 transition-colors dark:hover:bg-slate-800/40 light:hover:bg-slate-50">
+                            <td class="py-3 px-4 text-center font-medium border-r border-bordercol/60 text-slate-400 dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${item.no}</td>
+                            <td class="py-3 px-4 border-r border-bordercol/60 text-slate-400 dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${item.category}</td>
+                            <td class="py-3 px-4 border-r border-bordercol/60 font-medium text-slate-200 dark:border-bordercol/60 dark:text-slate-200 light:border-slate-200 light:text-slate-900">${item.check_item}</td>
+                            <td class="py-3 px-4 border-r border-bordercol/60 text-slate-400 text-[11px] leading-relaxed dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${item.criteria}</td>
+                            <td class="py-2 px-3 border-r border-bordercol/60 text-center dark:border-bordercol/60 light:border-slate-200">
+                                <select class="result-select w-full bg-slate-900 border border-slate-700 text-slate-300 py-1 px-2 rounded text-xs focus:outline-none focus:border-indigo-500 transition-colors dark:bg-slate-900 dark:border-slate-700 dark:text-slate-300 light:bg-white light:border-slate-300 light:text-slate-900" onchange="updateRowColor(this, '${sheetName}')">
                                     <option value="" disabled selected>-</option>
                                     <option value="Pass">Pass</option>
                                     <option value="Fail">Fail</option>
                                     <option value="N/A">N/A</option>
                                 </select>
                             </td>
-                            <td class="py-2 px-3 border-r border-bordercol/60">
-                                <textarea rows="1" class="w-full bg-transparent border-0 focus:ring-0 resize-none text-xs p-1 text-slate-300 placeholder-slate-600 focus:outline-none" placeholder="Notes..."></textarea>
+                            <td class="py-2 px-3 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">
+                                <textarea rows="1" class="w-full bg-transparent border-0 focus:ring-0 resize-none text-xs p-1 text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 dark:placeholder-slate-600 light:text-slate-900 light:placeholder-slate-400" placeholder="Notes..."></textarea>
                             </td>
-                            <td class="py-2 px-3 border-r border-bordercol/60">
-                                <input type="text" class="checked-by w-full bg-transparent border-0 focus:ring-0 text-xs p-1 uppercase text-center text-slate-300 placeholder-slate-600 focus:outline-none" placeholder="Initials">
+                            <td class="py-2 px-3 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">
+                                <input type="text" class="checked-by w-full bg-transparent border-0 focus:ring-0 text-xs p-1 uppercase text-center text-slate-300 placeholder-slate-600 focus:outline-none dark:text-slate-300 dark:placeholder-slate-600 light:text-slate-900 light:placeholder-slate-400" placeholder="Initials">
                             </td>
                             <td class="py-2 px-3">
-                                <input type="date" class="date-field w-full bg-transparent border-0 focus:ring-0 text-xs p-1 text-slate-400 focus:outline-none">
+                                <input type="date" class="date-field w-full bg-transparent border-0 focus:ring-0 text-xs p-1 text-slate-400 focus:outline-none dark:text-slate-400 light:text-slate-600">
                             </td>
                         </tr>
                     `;
@@ -436,9 +500,9 @@
             
             // Reset Sidebar Styling for all links
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm";
+                btn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left text-slate-400 hover:bg-slate-900 hover:text-slate-200 transition-all duration-150 nav-btn text-sm dark:text-slate-400 dark:hover:bg-slate-900 light:text-slate-600 light:hover:bg-slate-100";
                 const indicator = btn.querySelector('.indicator');
-                if (indicator) indicator.className = "w-1.5 h-1.5 rounded-full bg-slate-600 indicator";
+                if (indicator) indicator.className = "w-1.5 h-1.5 rounded-full bg-slate-600 indicator dark:bg-slate-600 light:bg-slate-400";
                 const icon = btn.querySelector('.indicator-icon');
                 if (icon) icon.classList.remove('text-indigo-400');
             });
@@ -446,9 +510,9 @@
             // Set Active Styling
             const activeBtn = document.getElementById(`nav-${safeId}`) || document.getElementById('nav-dashboard') || document.getElementById('nav-summary');
             if (activeBtn) {
-                activeBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800 border-opacity-50";
+                activeBtn.className = "w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-all duration-150 bg-slate-900/80 text-indigo-400 font-medium border border-slate-800/50 indicator-icon dark:bg-slate-900/80 dark:text-indigo-400 light:bg-slate-100 light:text-indigo-600 light:border-slate-300/50";
                 const activeIndicator = activeBtn.querySelector('.indicator');
-                if (activeIndicator) activeIndicator.className = "w-1.5 h-1.5 rounded-full bg-indigo-500 indicator";
+                if (activeIndicator) activeIndicator.className = "w-1.5 h-1.5 rounded-full bg-indigo-500 indicator dark:bg-indigo-500 light:bg-indigo-600";
                 const activeIcon = activeBtn.querySelector('.indicator-icon');
                 if (activeIcon) activeIcon.classList.add('text-indigo-400');
             }
@@ -499,14 +563,14 @@
             const summaryTable = document.getElementById('summary-table');
             let html = `
                 <thead>
-                    <tr class="bg-slate-900/80 text-slate-400 text-[11px] uppercase tracking-wider border-b border-bordercol/80 font-semibold">
-                        <th class="py-3 px-4 w-1/5 border-r border-bordercol/60">Checklist Platform</th>
-                        <th class="py-3 px-4 w-12 text-center border-r border-bordercol/60">#</th>
-                        <th class="py-3 px-4 border-r border-bordercol/60">Check Item</th>
+                    <tr class="bg-slate-900/80 text-slate-400 text-[11px] uppercase tracking-wider border-b border-bordercol/80 font-semibold dark:bg-slate-900/80 dark:text-slate-400 dark:border-bordercol/80 light:bg-slate-100 light:text-slate-600 light:border-slate-200">
+                        <th class="py-3 px-4 w-1/5 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Checklist Platform</th>
+                        <th class="py-3 px-4 w-12 text-center border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">#</th>
+                        <th class="py-3 px-4 border-r border-bordercol/60 dark:border-bordercol/60 light:border-slate-200">Check Item</th>
                         <th class="py-3 px-4 w-32 text-center">Result</th>
                     </tr>
                 </thead>
-                <tbody class="text-slate-300 text-xs divide-y divide-bordercol/60">
+                <tbody class="text-slate-300 text-xs divide-y divide-bordercol/60 dark:text-slate-300 light:text-slate-700">
             `;
 
             Object.keys(qcData).forEach((sheetName) => {
@@ -523,17 +587,17 @@
                         
                         // Styling for results
                         let resultClass = "";
-                        if (resultVal === 'Fail') resultClass = "text-red-500 font-bold bg-red-500/10";
-                        else if (resultVal === 'Pass') resultClass = "text-emerald-400 font-medium";
-                        else if (resultVal === 'N/A') resultClass = "text-slate-400";
-                        else resultClass = "text-slate-500 italic"; // Pending state
+                        if (resultVal === 'Fail') resultClass = "text-red-500 font-bold bg-red-500/10 dark:text-red-500 light:text-red-600 light:bg-red-50";
+                        else if (resultVal === 'Pass') resultClass = "text-emerald-400 font-medium dark:text-emerald-400 light:text-emerald-600";
+                        else if (resultVal === 'N/A') resultClass = "text-slate-400 dark:text-slate-400 light:text-slate-600";
+                        else resultClass = "text-slate-500 italic dark:text-slate-500 light:text-slate-400"; // Pending state
                         
                         html += `
-                            <tr class="hover:bg-slate-800/40 transition-colors">
-                                <td class="py-2.5 px-4 border-r border-bordercol/60 font-medium text-slate-400">${sheetName}</td>
-                                <td class="py-2.5 px-4 text-center border-r border-bordercol/60 text-slate-500">${item.no}</td>
-                                <td class="py-2.5 px-4 border-r border-bordercol/60 text-slate-200">${item.check_item}</td>
-                                <td class="py-2.5 px-4 text-center border-bordercol/60 ${resultClass}">${displayResult}</td>
+                            <tr class="hover:bg-slate-800/40 transition-colors dark:hover:bg-slate-800/40 light:hover:bg-slate-50">
+                                <td class="py-2.5 px-4 border-r border-bordercol/60 font-medium text-slate-400 dark:border-bordercol/60 dark:text-slate-400 light:border-slate-200 light:text-slate-600">${sheetName}</td>
+                                <td class="py-2.5 px-4 text-center border-r border-bordercol/60 text-slate-500 dark:border-bordercol/60 dark:text-slate-500 light:border-slate-200 light:text-slate-600">${item.no}</td>
+                                <td class="py-2.5 px-4 border-r border-bordercol/60 text-slate-200 dark:border-bordercol/60 dark:text-slate-200 light:border-slate-200 light:text-slate-900">${item.check_item}</td>
+                                <td class="py-2.5 px-4 text-center border-bordercol/60 ${resultClass} dark:border-bordercol/60 light:border-slate-200">${displayResult}</td>
                             </tr>
                         `;
                     });
@@ -575,9 +639,9 @@
                     bar.style.width = `${percentage}%`;
                     
                     if(percentage === 100) {
-                        bar.className = "bg-emerald-500 h-full rounded-full transition-all duration-500 progress-bar";
+                        bar.className = "bg-emerald-500 h-full rounded-full transition-all duration-500 progress-bar dark:bg-emerald-500 light:bg-emerald-500";
                     } else {
-                        bar.className = "bg-indigo-500 h-full rounded-full transition-all duration-500 progress-bar";
+                        bar.className = "bg-indigo-500 h-full rounded-full transition-all duration-500 progress-bar dark:bg-indigo-500 light:bg-indigo-500";
                     }
 
                     card.querySelector('.progress-text').textContent = `${data.completed} / ${data.total}`;
@@ -585,9 +649,9 @@
                     badge.textContent = `${percentage}%`;
                     
                     if(percentage === 100) {
-                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded status-badge";
+                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded status-badge dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/30 light:bg-emerald-50 light:text-emerald-600 light:border-emerald-300";
                     } else {
-                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge";
+                        badge.className = "text-[11px] font-semibold px-2 py-0.5 bg-slate-900 text-slate-400 border border-slate-800 rounded status-badge dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 light:bg-slate-100 light:text-slate-600 light:border-slate-300";
                     }
                 }
             });
@@ -611,10 +675,10 @@
             const btn = document.querySelector('#bulk-fill-tool button');
             const originalText = btn.textContent;
             btn.textContent = "Done!";
-            btn.className = "bg-emerald-600 text-white border border-emerald-500 text-xs font-medium px-3 py-1 rounded transition duration-150";
+            btn.className = "bg-emerald-600 text-white border border-emerald-500 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-emerald-600 light:bg-emerald-600";
             setTimeout(() => {
                 btn.textContent = originalText;
-                btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150";
+                btn.className = "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 text-xs font-medium px-3 py-1 rounded transition duration-150 dark:bg-slate-800 dark:hover:bg-slate-700 light:bg-slate-200 light:hover:bg-slate-300 light:text-slate-900 light:border-slate-400";
             }, 1200);
         }
 
